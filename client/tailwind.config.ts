@@ -11,6 +11,10 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        rickblack: '#00171f',
+        PrussianBlue: '#003459',
+        Cerulean: '#007ea7',
+        PictonBlue: '#00a8e8' 
       },
     },
   },

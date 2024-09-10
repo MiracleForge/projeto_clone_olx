@@ -12,3 +12,19 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.asideBar {
+  @apply flex flex-col order-1 md:order-2 w-full md:w-1/3 h-auto text-center  py-6 md:pt-16 lg:pt-24 md:hidden lg:block space-y-4 md:space-y-8 items-center justify-center px-10  rounded-r-none md:rounded-r-3xl border-l-[1px] border-Cerulean bg-gradient-to-r from-PrussianBlue to-Cerulean 
+}
+
+.conteinerSection {
+  @apply flex flex-col md:flex-row w-auto h-auto justify-center m-0 md:m-20 lg:m-28 lg:mt-10 
+}
+
+.containerForms {
+  @apply w-full lg:w-1/2 order-2 md:order-1 h-auto flex flex-col text-center space-y-2 items-center  md:rounded-3xl lg:rounded-none md:rounded-l-3xl lg:rounded-l-3xl pt-0 md:pt-16 lg:pt-24 text-rickblack shadow-md shadow-Cerulean/20 border-t-2
+}
+
+.forms {
+  @apply flex items-center border-2 rounded-xl bg-white mx-10 md:mx-28 lg:mx-auto lg:w-1/2 h-12 p-2 relative
+}

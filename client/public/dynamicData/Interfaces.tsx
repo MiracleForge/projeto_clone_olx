@@ -9,6 +9,24 @@ export interface LinksNavbar {
     hasOptions?: boolean;
 }
 
+export interface State {
+    acronym: string;
+    name: string;
+    code: number
+  }
+  
+interface UserLocation {
+    city: string;
+    state: string;
+    postcode: string;
+}
+
+export  interface GeoLocationData {
+    results: {
+        userLocation: UserLocation;
+    }[];
+}
+
 // Dados de exemplo
 export const productCategories: ProductCategory[] = [
     { id: 1, name: 'Eletrônicos' },
