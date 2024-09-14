@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
-import RegisterForm from '@/app/components/forms/registerForm/RegisterForm';
+import { AuthCardWrapper } from '@/app/components/auth/AuthCardWrapper';
+import { RegisterForm } from '@/app/components/auth/registerForm/RegisterForm';
+
 export const metadata: Metadata = {
-  title: 'Register'
+  title: 'Criação de Conta - Registre-se Agora'
 }
+
 const Register: React.FC = () => {
   return (
-    <main className="w-full h-full my-0 md:my-10 mx-auto">
-        <RegisterForm/>
-    </main>
+    <AuthCardWrapper
+      title="Crie sua Conta Agora - Junte-se à Gatuu"
+      firstParagraph="Crie sua conta Gatuu rapidamente"
+      asideTitle="Bem-vindo de Volta à Gatuu"
+      asideParagraph="Estamos ansiosos para tê-lo de volta"
+      mode='register'
+      socialButtons
+    >
+     <RegisterForm/>
+    </AuthCardWrapper>
   );
 };
 

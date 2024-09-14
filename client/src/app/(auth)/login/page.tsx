@@ -1,13 +1,23 @@
 import type { Metadata } from 'next'
-import FormLogin from '@/app/components/forms/loginForm/LoginForm';
+import { AuthCardWrapper } from '@/app/components/auth/AuthCardWrapper';
+import { LoginForm } from '@/app/components/auth/loginForm/LoginForm';
+
 export const metadata: Metadata = {
   title: 'Login'
 }
+
 const Login: React.FC = () => {
   return (
-    <main className="w-full h-full my-0 md:my-10 mx-auto">
-        <FormLogin/>
-    </main>
+    <AuthCardWrapper
+    title="Faça Login para Anunciar"
+    firstParagraph="Faça Login na sua Conta Gatuu"
+    asideTitle="Seja bem vindo de Volta"
+    asideParagraph="Estavamos esperando seu retorno"
+    mode='login'
+    socialButtons
+>
+    <LoginForm />
+</AuthCardWrapper>
   );
 };
 
