@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, SelectHTMLAttributes } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo_gato from '@/../../public//assets/images/logos/logo-gatu.webp';
@@ -8,9 +8,19 @@ import { linksNavbar, productCategories } from '../../../../public/dynamicData/I
 import useGeoLocalization from '@/app/hooks/useGeoLocationHook';
 
 const Navbar = () => {
-  const { userCoord, userLocation, loading, error } = useGeoLocalization();
+  const { userCoord, locationDetails, error } = useGeoLocalization();
   const [isMegaMenuOpen, setMegaMenuOpen] = useState(false);
   const [selectedState, setSelectedState] = useState<string>("");
+
+  useEffect ( () => {
+    if (locationDetails.stateCode){
+      setSelectedState(locationDetails.stateCode);
+    }
+  },[locationDetails.stateCode]);
+
+  const handleSelectStateChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedState(event.target.value);
+  }
 
   const renderNavbarLinks = () => (
     <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8">
@@ -67,20 +77,46 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="relative flex flex-col justify-between items-center w-full p-2 bg-white border-gray-200 dark:border-gray-600 dark:bg-black">
+    <nav className="relative flex flex-col justify-between items-center w-full p-2 bg-white border-gray-200 dark:border-gray-600 dark:bg-black px-6 xl:px-8">
       <div className="flex justify-between items-center w-full">
         {/* Imagem alinhada à esquerda */}
         <div className="flex items-center">
           <Link href="/" aria-label="Ir para a página inicial" className="flex items-center space-x-3 rtl:space-x-reverse">
             <Image src={logo_gato} alt="Logo da Gatu" className="w-10 h-10" />
           </Link>
-          <div className="flex items-center space-x-2 xl:ml-12">
-            <div className="flex bg-gray-100 p-1 w-72 lg:w-52 xl:w-72 xl:space-x-4 rounded-sm">
-              <input className="bg-gray-100 outline-none text-xs w-36 xl:w-72" type="text" placeholder="Pesquisar na Gatu" />
+          <div className="flex items-center space-x-2">
+            <div className="flex bg-gray-100 p-1 w-72 lg:w-52 xl:w-72 xl:space-x-4 rounded-sm ml-3">
+              <input className="bg-gray-100 outline-none text-xs w-36 xl:w-72 px-2 p-1" type="text" placeholder="Pesquisar na Gatu" />
             </div>
-            <div className="flex py-2 px-4 rounded-lg text-gray-500 font-semibold cursor-pointer">
-              <select name="state" id="state" className="bg-transparent">
-                <option id="0" label="Brasil" value="brasil">Brasil</option>
+            <div className="flex py-2 px-0 rounded-lg text-gray-500 font-semibold cursor-pointer">
+              <select name="state" id="state" className="bg-transparent px-2" value={selectedState} onChange={handleSelectStateChange}>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SC">SC</option>
+                <option value="SP">SP</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
               </select>
             </div>
           </div>
@@ -113,7 +149,6 @@ const Navbar = () => {
       </div>
 
       {isMegaMenuOpen && renderMegaMenu()}
-      {/* <pre>{JSON.stringify(userLocation?.results, null, 2)}</pre> */}
     </nav>
   );
 };
