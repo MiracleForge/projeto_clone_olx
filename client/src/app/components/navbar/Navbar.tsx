@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect, SelectHTMLAttributes } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo_gato from '@/../../public//assets/images/logos/logo-gatu.webp';
@@ -23,7 +23,7 @@ const Navbar = () => {
   }
 
   const renderNavbarLinks = () => (
-    <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-8">
+    <ul className="flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-6 lg:space-x-8">
       {linksNavbar.map(link => (
         <li className='flex items-center' key={link.id}>
           <Link
@@ -77,16 +77,16 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="relative flex flex-col justify-between items-center w-full p-2 bg-white border-gray-200 dark:border-gray-600 dark:bg-black px-6 xl:px-8">
+    <nav className="relative flex flex-col justify-between items-center w-full p-2 bg-white border-gray-200 dark:border-gray-600 dark:bg-black md:px-6 xl:px-8">
       <div className="flex justify-between items-center w-full">
         {/* Imagem alinhada à esquerda */}
         <div className="flex items-center">
-          <Link href="/" aria-label="Ir para a página inicial" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <Link href="/" aria-label="Ir para a página inicial" className="flex items-center space-x-3 rtl:space-x-reverse flex-shrink-0">
             <Image src={logo_gato} alt="Logo da Gatu" className="w-10 h-10" />
           </Link>
           <div className="flex items-center space-x-2">
-            <div className="flex bg-gray-100 p-1 w-72 lg:w-52 xl:w-72 xl:space-x-4 rounded-sm ml-3">
-              <input className="bg-gray-100 outline-none text-xs w-36 xl:w-72 px-2 p-1" type="text" placeholder="Pesquisar na Gatu" />
+            <div className="flex bg-gray-100 p-1 xl:space-x-4 rounded-sm ml-3">
+              <input className="bg-gray-100 outline-none text-xs w-36 lg:w-[15rem] xl:w-72 px-2 p-1" type="text" placeholder="Pesquisar na Gatu" />
             </div>
             <div className="flex py-2 px-0 rounded-lg text-gray-500 font-semibold cursor-pointer">
               <select name="state" id="state" className="bg-transparent px-2" value={selectedState} onChange={handleSelectStateChange}>
