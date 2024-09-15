@@ -53,7 +53,7 @@ const Navbar = () => {
   const renderMegaMenu = () => (
     <div
       id="mega-menu-full-dropdown"
-      className="w-full mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600 absolute top-12"
+      className="w-full mt-1 bg-white border-gray-200 shadow-sm border-y dark:bg-gray-800 dark:border-gray-600 absolute top-[3.2rem] z-20"
       aria-labelledby="mega-menu-full-dropdown-button"
     >
       <div className="grid px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">

@@ -4,14 +4,23 @@ import { IoEye, IoEyeOff, IoCloseCircleSharp } from 'react-icons/io5';
 
 interface InputAnimatedProps {
     label: string;
-    type: 'text' | 'password'
+    type: 'text' | 'password';
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
+    error?: string;
 }
 
-export const InputClassAnimated = ({ label, type = 'text' }: InputAnimatedProps) => {
+export const InputClassAnimated = ({
+    label,
+    type = 'text',
+    value,
+    onChange,
+    onBlur,
+    error
+}: InputAnimatedProps) => {
     const [statusEye, setStatusEye] = useState(false);
     const [inputFocusState, setInputFocusState] = useState<boolean>(false);
-    const [isValueEmpty, setValueEmpty] = useState(false);
-    const [isTouched, setIsTouched] = useState(false);
 
     const handleEyeStatus = () => {
         setStatusEye(!statusEye);
@@ -19,16 +28,11 @@ export const InputClassAnimated = ({ label, type = 'text' }: InputAnimatedProps)
 
     const handleInputFocus = () => {
         setInputFocusState(true);
-        setIsTouched(true);
     };
 
     const handleInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-        if (e.target.value === '') {
-            setInputFocusState(false);
-            setValueEmpty(true);
-        } else {
-            setValueEmpty(false);
-        }
+        setInputFocusState(false);
+        onBlur(e);
     };
 
     return (
@@ -41,12 +45,14 @@ export const InputClassAnimated = ({ label, type = 'text' }: InputAnimatedProps)
                 </small>
             </label>
             <input
-                type={statusEye ? 'text' : type} // Use o estado do ícone para alternar entre 'text' e 'password'
+                type={statusEye ? 'text' : type} 
                 id={label}
-                required
-                className='text-sm focus:outline-none w-full pr-10'
+                value={value}
+                onChange={onChange}
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
+                required
+                className='text-sm focus:outline-none w-full pr-10'
             />
 
             {type === 'password' && (
@@ -58,8 +64,10 @@ export const InputClassAnimated = ({ label, type = 'text' }: InputAnimatedProps)
                     {statusEye ? <IoEyeOff /> : <IoEye />}
                 </button>
             )}
-           {isValueEmpty && isTouched && (
-                <span className='text-red-500 text-xs mt-1 absolute -bottom-6 flex items-center space-x-3 gap-x-2'> <IoCloseCircleSharp/> Preencha o campo {label}</span>
+            {error && (
+                <span className='text-red-500 text-xs mt-1 absolute -bottom-6 flex items-center space-x-3 gap-x-2'>
+                    <IoCloseCircleSharp /> {error}
+                </span>
             )}
         </div>
     )
