@@ -35,8 +35,8 @@ const getProviderSVG = (providerName: 'Google' | 'Facebook') => {
 
 export const ProviderAuthButton = ({ providerLabel, providerName }: ProviderAuthButtonProps) => {
     return (
-        <button className=" bg-white px-6 transition-colors duration-300 transform border rounded-xl hover:bg-PictonBlue">
-            <Link href={"#"} className="item-center flex px-4 py-3 text-center justify-center space-x-3">
+        <button className=" block w-[20rem] rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500">
+            <Link href={"#"} className="item-center flex  text-center justify-center space-x-3">
                 {getProviderSVG(providerName)}
                 <span >{providerLabel}</span>
             </Link>
