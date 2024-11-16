@@ -7,8 +7,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import { linksNavbar, productCategories } from '../../../../public/dynamicData/Interfaces';
 import { ExpansiveInput } from '../inputs/searchInputs/ExpansiveInput';
 import { roboto } from '@/app/fonts/font/Fonts';
-import GeoLocalization from '../dropdown/GeoLocalizationDropDown';
-
+import StatePickerGeo from '../dropdowns/StatePickerGeo';
 const Navbar = () => {
 
   const [isMegaMenuOpen, setMegaMenuOpen] = useState(false);
@@ -18,7 +17,7 @@ const Navbar = () => {
     <div className='flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-6 lg:space-x-8'>
       <div className='flex'>
         <ExpansiveInput />
-        <GeoLocalization />
+        <StatePickerGeo />
       </div>
       <ul className="flex flex-col font-medium md:flex-row md:space-x-6 lg:space-x-8">
         {linksNavbar.map(link => (
