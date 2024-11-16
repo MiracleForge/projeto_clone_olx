@@ -12,7 +12,25 @@ interface LocationDetails {
   state: string | null;
   city: string | null;
 }
-
+/**
+ * Hook for fetching geolocation and location details.
+ * Custom hook for obtaining user's geolocation.
+ *
+ * This hook utilizes the browser's geolocation API to fetch the user's current
+ * position (latitude and longitude), makes a request to an external API to obtain
+ * location details, and stores the information in `localStorage` with a 24-hour expiration time.
+ *
+ * @returns {Object} The object containing geolocation information.
+ * @returns {Coords | null} userCoord - The user's coordinates (latitude and longitude).
+ * @returns {LocationDetails} locationDetails - The location details including city, state, and country code.
+ * @returns {boolean} loading - A flag indicating if the geolocation data is still being fetched.
+ * @returns {string | null} error - An error message if an error occurs.
+ *
+ * @example
+ * const { userCoord, locationDetails, loading, error } = useGeoLocalization();
+ *
+ * @returns {Object} The object containing user's coordinates, location details, loading, and error states.
+ */
 const useGeoLocalization = () => {
   const [userCoord, setUserCoord] = useState<Coords | null>(null);
   const [locationDetails, setLocationDetails] = useState<LocationDetails>({

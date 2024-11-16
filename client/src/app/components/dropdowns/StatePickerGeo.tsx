@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import useGeoLocalization from '@/app/hooks/useGeoLocalization';
 
+/**
+ * A dropdown component that allows users to select a state, with default selection based on the user's geolocation.
+ *
+ * This component uses the `useGeoLocalization` hook to fetch the user's location details, and if a state code is available,
+ * it pre-selects the state in the dropdown. Users can change the selected state through the dropdown menu.
+ * The selected state is stored in the component's state and updated when changed.
+ *
+ * @component
+ * @example
+ * return <StatePickerGeo />;
+ *
+ * @returns {JSX.Element} The `StatePickerGeo` component, which renders a select dropdown for state selection.
+ */
 const StatePickerGeo = () => {
   const { locationDetails, error, loading } = useGeoLocalization();
   const [selectedState, setSelectedState] = useState<string>("");
@@ -64,6 +77,7 @@ const StatePickerGeo = () => {
         <option value="SE">SE</option>
         <option value="TO">TO</option>
       </select>
+
     </div>
   );
 };
