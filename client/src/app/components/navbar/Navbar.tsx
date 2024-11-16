@@ -15,12 +15,12 @@ const Navbar = () => {
 
   const renderNavbarLinks = () => (
 
-      <div className='flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-6 lg:space-x-8'>
-        <div className='flex'>
-          <ExpansiveInput />
-          <GeoLocalization/>
-        </div>
-            <ul className="flex flex-col font-medium md:flex-row md:space-x-6 lg:space-x-8">
+    <div className='flex flex-col mt-4 font-medium md:flex-row md:mt-0 md:space-x-6 lg:space-x-8'>
+      <div className='flex'>
+        <ExpansiveInput />
+        <GeoLocalization />
+      </div>
+      <ul className="flex flex-col font-medium md:flex-row md:space-x-6 lg:space-x-8">
         {linksNavbar.map(link => (
           <li className='flex items-center' key={link.id}>
             <Link
@@ -44,8 +44,8 @@ const Navbar = () => {
             )}
           </li>
         ))}
-            </ul>
-      </div>
+      </ul>
+    </div>
   );
 
   const renderMegaMenu = () => (
@@ -54,7 +54,7 @@ const Navbar = () => {
       className="w-full mt-1 bg-white border-gray-200 shadow-sm border-y absolute top-[3.2rem] z-20"
       aria-labelledby="mega-menu-full-dropdown-button"
     >
-      <div className="grid px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:grid-cols-3 md:px-6">
+      <div className="grid px-4 py-5 mx-auto text-gray-900 sm:grid-cols-2 md:grid-cols-3 md:px-6">
         <ul>
           {productCategories.map(category => (
             <li key={category.id}>
@@ -62,10 +62,10 @@ const Navbar = () => {
                 href={`/${category.name.toLowerCase()}`}
                 title={category.name}
                 aria-label={`Categoria de produto ${category.name}`}
-                className="block p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700"
+                className="block p-3 rounded-lg hover:bg-gray-50"
               >
                 <div className="font-semibold">{category.name}</div>
-                <span className="text-sm text-gray-500 dark:text-gray-400">Descrição de {category.name}</span>
+                <span className="text-sm text-gray-500">Descrição de {category.name}</span>
               </Link>
             </li>
           ))}
@@ -79,8 +79,9 @@ const Navbar = () => {
       <div className="flex justify-between items-center w-full">
         {/* Imagem alinhada à esquerda */}
         <div className="flex items-center">
-          <Link href="/" aria-label="Ir para a página inicial" className="flex items-center flex-shrink-0 px-4">
+          <Link href="/" aria-label="Ir para a página inicial" className="flex items-center flex-shrink-0 px-4 space-x-3 text-xl font-medium">
             <Image src={logo_gato} alt="Logo da Gatu" className="w-10 h-10" />
+            <span>Gatu</span>
           </Link>
         </div>
 

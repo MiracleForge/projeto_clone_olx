@@ -1,7 +1,7 @@
 import React, { FC, ButtonHTMLAttributes } from 'react';
 import { VariantProps, cva } from 'class-variance-authority';
+import Link from 'next/link';
 import { cn } from '@/app/hooks/utils';
-
 
 // Define buttonVariants using cva
 const buttonVariants = cva(
@@ -17,7 +17,7 @@ const buttonVariants = cva(
       },
       size: {
         default: 'block w-full py-3 px-12',
-        sm: 'px-12 py-3 w-[20rem]',
+        sm: 'px-12 py-3 w-[20rem] md:w-[28rem] lg:w-[20rem]',
         md: 'px-12 py-3'
       },
     },
@@ -29,14 +29,25 @@ const buttonVariants = cva(
 );
 
 // Define ButtonProps interface extending VariantProps
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  hasLink?: boolean; 
+  url?: string
+}
 
-// Define buttonTest component as a functional component
-const ButtonComponent: FC<ButtonProps> = ({ className, size, variant, ...props}) => {
+// Define ButtonComponent as a functional component
+const ButtonComponent: FC<ButtonProps> = ({ className, size, variant, hasLink, url, ...props }) => {
   return (
-    <button className={cn(buttonVariants({ variant, size, className }))} {...props}/>
+    hasLink ? (
+      <Link href={`${url}`} className='w-full h-full'>
+        <button className={cn(buttonVariants({ variant, size, className }))} {...props}>
+          <span className='w-full h-full'>Login com Email</span>
+        </button>
+      </Link>
+    ) : (
+      <button className={cn(buttonVariants({ variant, size, className }))} {...props} />
+    )
   );
 };
 
-// Export ButtonTest and buttonVariants
+// Export ButtonComponent and buttonVariants
 export { ButtonComponent, buttonVariants };

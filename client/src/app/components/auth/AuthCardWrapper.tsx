@@ -4,7 +4,7 @@ import Logo from '../../../../public/assets/images/logos/logo-gatu.webp';
 import GoogleProviderButton from '@/app/components/auth/providerAuthButton/ProviderAuthButton';
 import FacebookProviderButton from '@/app/components/auth/providerAuthButton/ProviderAuthButton';
 import Link from 'next/link';
-import { Button } from '../buttons/Buttons';
+import { ButtonComponent } from '../buttons/Buttons';
 import { cn } from '@/app/hooks/utils';
 
 interface AuthCardWrapperProps {
@@ -16,6 +16,7 @@ interface AuthCardWrapperProps {
     asideParagraph: string;
     socialButtons: boolean;
 }
+
 
 export const AuthCardWrapper = ({ children, title, firstParagraph, asideTitle, asideParagraph, socialButtons, mode = 'login' }: AuthCardWrapperProps) => {
 
@@ -54,7 +55,7 @@ export const AuthCardWrapper = ({ children, title, firstParagraph, asideTitle, a
                         <span className=" border-b w-16 md:w-28 mr-auto"></span>
                     </div>
 
-                    {children}
+                    {children} 
 
                     {mode === 'login' &&
                         <div className='flex flex-row justify-center space-x-10 md:space-x-24 lg:space-x-0 lg:justify-between items-center whitespace-nowrap text-xs md:text-sm w-1/2 mx-auto md:mx-40 lg:mx-auto'>
@@ -69,9 +70,9 @@ export const AuthCardWrapper = ({ children, title, firstParagraph, asideTitle, a
                         </div>
                     }
 
-                    <Button size='md' aria-label='Search' type='submit' className={cn("my-3")}>
+                    <ButtonComponent size='md' aria-label='Search' type='submit' className={cn("my-3")}>
                         Login in
-                    </Button>
+                    </ButtonComponent>
 
                     {mode === 'login' &&
                              <div className='flex flex-row justify-center space-x-2 py-6 leading-10 '>
