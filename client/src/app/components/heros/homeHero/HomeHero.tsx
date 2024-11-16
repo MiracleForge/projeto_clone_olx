@@ -12,32 +12,6 @@ interface HeroProps extends React.ComponentProps<'section'> {
     showButtons: boolean;
 };
 
-/**
- * Hero section component for the home page, typically displayed at the top of the page.
- *
- * This component displays a full-screen background image with a headline, subheading,
- * description, and buttons for login and actions like "Stay Logged In" and "Recover Password".
- * It includes options for Google and Facebook login, as well as a standard login button.
- *
- * @component
- * @example
- * const title = "Welcome to Our Website";
- * const headingH1 = "Main Title";
- * const subHeading = "Subheading goes here";
- * const description = "This is the description for the Hero section.";
- * const showButtons = true;
- * return <HomeHero headingH1={headingH1} subHeading={subHeading} description={description} showButtons={showButtons} />;
- *
- * @param {Object} props - The props for the Hero component.
- * @param {string} props.headingH1 - The main headline of the Hero section.
- * @param {string} props.subHeading - The subheading displayed below the main headline.
- * @param {string} props.description - A description text displayed below the subheading.
- * @param {boolean} props.showButtons - A flag to control whether the login buttons (Google, Facebook) and actions should be shown.
- * @param {React.ComponentProps<'section'>} props - Additional properties passed to the section element (e.g., className, style).
- *
- * @returns {JSX.Element} The Hero component with the provided props.
- */
-
 const HomeHero = ({title, headingH1, subHeading, description, showButtons,...props}: HeroProps) => {
 
     return (

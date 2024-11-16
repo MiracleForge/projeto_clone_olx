@@ -17,7 +17,7 @@ export default function Home() {
                 <ProprietyCards />
                 <ProprietyCards />
                 <ProprietyCards />
-            </section>
+             </section>
 
             <section aria-label="Categorias" className="flex flex-wrap gap-12 justify-center">
                 <CategoryCards />

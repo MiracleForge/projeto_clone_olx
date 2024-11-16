@@ -14,7 +14,7 @@ const config: Config = {
         rickblack: '#00171f',
         PrussianBlue: '#003459',
         Cerulean: '#007ea7',
-        PictonBlue: '#00a8e8' 
+        PictonBlue: '#00a8e8'
       },
     },
   },
