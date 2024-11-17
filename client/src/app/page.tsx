@@ -1,6 +1,7 @@
 import ProprietyCards from '@/app/components/cards/categoryCards/ProprietyCards';
 import HomeHero from "./components/heros/homeHero/HomeHero";
 import CategoryCards from "./components/cards/categoryCards/CategoryCards";
+import { WrapperCards } from './layout/housesWrapper/WrapperCards';
 
 export default function Home() {
     return (
@@ -12,12 +13,7 @@ export default function Home() {
                 showButtons={true}
             />
 
-            <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full bodyPadding">
-                <ProprietyCards />
-                <ProprietyCards />
-                <ProprietyCards />
-                <ProprietyCards />
-             </section>
+             <WrapperCards/>
 
             <section aria-label="Categorias" className="flex flex-wrap gap-12 justify-center">
                 <CategoryCards />
