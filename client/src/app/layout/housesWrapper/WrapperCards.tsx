@@ -15,7 +15,7 @@ const getCardsByCategory = async <T extends CardCategoryProps>(CardCategory: T):
             method: 'GET'
         });
         if (!response.ok) {
-            throw new Error(`Failed to fecth ${CardCategory}`);
+            throw new Error(`Failed to fetch ${CardCategory}`);
         };
         const data = await response.json();
         return Array.isArray(data) ? data : [];

@@ -1,4 +1,3 @@
-import ProprietyCards from '@/app/components/cards/categoryCards/ProprietyCards';
 import HomeHero from "./components/heros/homeHero/HomeHero";
 import CategoryCards from "./components/cards/categoryCards/CategoryCards";
 import { WrapperCards } from './layout/housesWrapper/WrapperCards';
