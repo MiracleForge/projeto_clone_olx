@@ -7,6 +7,7 @@ import LikeButton from '../../buttons/likeButtons/LikeButton';
 // custom hooks
 import useFormattedCurrency from '@/app/hooks/formatHooks/useFormattedCurrency';
 // React icons
+import { FaCheckCircle } from "react-icons/fa";
 
 export interface Address {
     street: string;
@@ -14,30 +15,32 @@ export interface Address {
     city: string;
     state: string;
     zipCode: string;
-}
+};
 
-export interface WrapperCardsProps {
+export interface CommumWrapperCards {
     id: string;
     title: string;
+    verified: boolean
+    brand: string;
+    price: number;
+    badge: string;
+};
+
+export interface WrapperCardsProps extends CommumWrapperCards {
     address: Address;
     bedrooms: number;
     bathrooms: number;
     garage: number;
     condominium: boolean;
-    price: number;
-    badge: string;
 };
 
-export interface PcCardProps {
-    id: number;
-    brand: string;
+export interface PcCardProps extends CommumWrapperCards {
     model: string;
     specs: string;
-    price: number;
     condition: string;
 };
 
-const ProprietyCards = ({ id, title, address = { street: '', number: '', city: '', state: '', zipCode: '' }, bedrooms, bathrooms, garage, condominium, price, badge }: WrapperCardsProps): React.JSX.Element => {
+const ProprietyCards = ({ id, title, address = { street: '', number: '', city: '', state: '', zipCode: '' }, bedrooms, bathrooms, garage, condominium, price, badge, verified }: WrapperCardsProps): React.JSX.Element => {
 
     const formattedCurrency: string | null = useFormattedCurrency(price);
 
@@ -52,9 +55,13 @@ const ProprietyCards = ({ id, title, address = { street: '', number: '', city: '
     return (
         <Link href={`#${id}`} className="relative mx-auto w-full">
             <div className="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-                <div className="shadow p-4 rounded-lg bg-white">
-                    <div className="relative flex justify-center rounded-lg overflow-hidden h-52">
-                        <div className="relative transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
+                {verified &&
+                    <FaCheckCircle className='text-lg text-green-600 ml-2 absolute origin-top-right top-[0.5rem] left-1 bg-green-100 rounded-full z-50' />
+                }
+                <div className="shadow p-4 rounded-sm bg-white">
+                    <div className="relative flex justify-center rounded-sm overflow-hidden h-52">
+
+                        <div className={`${verified && 'border-2 border-green-600'} relative transition-transform duration-500 transform ease-in-out hover:scale-110 w-full`}>
                             {/*<div className="absolute inset-0 bg-black opacity-10"></div>*/}
                             <Image
                                 className='object-cover'
@@ -66,20 +73,21 @@ const ProprietyCards = ({ id, title, address = { street: '', number: '', city: '
                         </div>
 
                         <div className="absolute flex justify-center bottom-0 mb-3">
-                            <div className="flex bg-white px-4 py-1 space-x-5 rounded-lg overflow-hidden shadow">
-                                <CategoryCardLabels bedrooms={bedrooms} bathrooms={bathrooms} garage={garage}/>
+                            <div className="flex bg-white px-4 py-1 space-x-5 rounded-sm overflow-hidden shadow">
+                                <CategoryCardLabels bedrooms={bedrooms} bathrooms={bathrooms} garage={garage} />
                             </div>
                         </div>
 
                         <span className="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg bg-red-500 text-sm font-medium text-white select-none">
                             {badge}
                         </span>
+
                     </div>
 
                     <div className="mt-4">
                         <div className='flex justify-between'>
                             <span className='text-xl font-bold'>{formattedCurrency}</span>
-                            <span onClick={StopLinkPropagation}><LikeButton/></span>
+                            <span onClick={StopLinkPropagation}><LikeButton /></span>
                         </div>
                         <h2 className="font-medium text-base md:text-lg text-gray-800 line-clamp-1 pt-4" title={`${title}`}>
                             {title}

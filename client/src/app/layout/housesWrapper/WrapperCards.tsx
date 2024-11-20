@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import ProprietyCards from '@/app/components/cards/categoryCards/ProprietyCards'
 import { WrapperCardsProps, PcCardProps } from '@/app/components/cards/categoryCards/ProprietyCards'
 type WrapperCardsUpdateProps = Partial<WrapperCardsProps>; // APENAS EXEMPLIFICANDO COMO FAZER PARA UMA INTERFACE DE UPDATE, SEM PRECISAR CRIAR NOVAMENTE OUTRA INTERFACE
+type wrapperUpdatOmmit = Omit<WrapperCardsProps, 'id'>
 
 // TODO TERMINAR O FECT , ADICIONAR HEADER CONTROLADORES ETC E REMOVER PARA UM ARQUIVO SEPARADO
 type CardCategoryProps = 'houses' | 'pc';

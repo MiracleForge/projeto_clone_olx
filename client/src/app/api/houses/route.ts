@@ -15,9 +15,10 @@ interface House {
     bedrooms: number;
     bathrooms: number;
     garage: number;
-    condominium: boolean;
+    condominium: Boolean;
     price: number;
-    badge:string
+    badge:string;
+    verified: boolean;
 }
 
 export async function GET(request: Request): Promise<Response> {
@@ -37,7 +38,8 @@ export async function GET(request: Request): Promise<Response> {
             garage: 2,
             condominium: true,
             price: 750000.0,
-            badge: "Black Friday"
+            badge: "Black Friday",
+            verified: true
         },
         {
             id: 2,
@@ -54,8 +56,9 @@ export async function GET(request: Request): Promise<Response> {
             garage: 1,
             condominium: false,
             price: 550000.0,
-            badge: "Destaque"
-        },
+            badge: "Destaque",
+            verified: true
+    },
         {
             id: 3,
             title: "Cobertura Luxuosa",
@@ -71,7 +74,8 @@ export async function GET(request: Request): Promise<Response> {
             garage: 3,
             condominium: true,
             price: 1200000.0,
-            badge: "Black Friday"
+            badge: "Black Friday",
+            verified: true
         },
         {
             id: 4,
@@ -88,7 +92,8 @@ export async function GET(request: Request): Promise<Response> {
             garage: 1,
             condominium: false,
             price: 650000.0,
-            badge: "Black Friday"
+            badge: "Black Friday",
+            verified: true
         },
     ];
 
